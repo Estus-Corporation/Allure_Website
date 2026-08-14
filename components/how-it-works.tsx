@@ -130,22 +130,14 @@ export default function HowItWorks() {
   return (
     <section id="como-funciona" className="relative py-10 lg:py-12 bg-[#071626] overflow-hidden">
 
-      {/* Corner images — dimmed and blurred so they read as ambient backdrop, not foreground detail.
-          Sized down below md: so the fixed-aspect artwork doesn't dominate narrow viewports. */}
-      <div className="pointer-events-none absolute bottom-6 -left-10 w-[26rem] h-[20rem] md:w-[70rem] md:h-[56rem] lg:w-[90rem] lg:h-[70rem] select-none opacity-25 blur-[2px] [animation:float_7s_ease-in-out_infinite]">
+      {/* Imagem de fundo — cobre a section inteira, dimmed/blurred pra ler como backdrop ambiente. */}
+      <div className="pointer-events-none absolute inset-0 select-none opacity-30 blur-[2px]">
         <Image
-          src="/images/solar.jpg"
+          src="/images/ceu.png"
           alt=""
           fill
-          className="object-contain object-bottom"
-        />
-      </div>
-      <div className="pointer-events-none absolute bottom-6 -right-10 w-[26rem] h-[20rem] md:w-[70rem] md:h-[56rem] lg:w-[90rem] lg:h-[70rem] select-none opacity-25 blur-[2px] [animation:float_7s_ease-in-out_infinite] [animation-delay:2.5s]">
-        <Image
-          src="/images/solar.jpg"
-          alt=""
-          fill
-          className="object-contain object-bottom scale-x-[-1]"
+          quality={95}
+          className="object-cover"
         />
       </div>
 
@@ -156,7 +148,7 @@ export default function HowItWorks() {
         className="pointer-events-none absolute inset-0 z-[1] md:hidden"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(7,22,38,0.55) 0%, #071626 30%, #071626 70%, rgba(7,22,38,0.55) 100%)",
+            "linear-gradient(to bottom, rgba(7,22,38,0.42) 0%, rgba(7,22,38,0.92) 30%, rgba(7,22,38,0.92) 70%, rgba(7,22,38,0.42) 100%)",
         }}
         aria-hidden
       />
@@ -164,7 +156,7 @@ export default function HowItWorks() {
         className="pointer-events-none absolute inset-0 z-[1] hidden md:block"
         style={{
           background:
-            "radial-gradient(ellipse 70% 65% at 50% 42%, #071626 0%, rgba(7,22,38,0.85) 45%, rgba(7,22,38,0.55) 72%, rgba(7,22,38,0.3) 100%)",
+            "radial-gradient(ellipse 70% 65% at 50% 42%, rgba(7,22,38,0.9) 0%, rgba(7,22,38,0.72) 45%, rgba(7,22,38,0.45) 72%, rgba(7,22,38,0.22) 100%)",
         }}
         aria-hidden
       />

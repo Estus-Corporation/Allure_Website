@@ -101,7 +101,7 @@ export default function Testimonials() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="section-py bg-background">
+    <section className="section-py bg-white">
       <div ref={ref} className={`px-5 sm:px-6 lg:px-8 scroll-animate ${isVisible ? "visible" : ""}`}>
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 items-end mb-16 lg:mb-20">

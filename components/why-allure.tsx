@@ -188,7 +188,7 @@ export default function WhyAllure() {
   }, []);
 
   return (
-    <section id="por-que-allure" className="section-py bg-muted bg-dots">
+    <section id="por-que-allure" className="section-py bg-muted bg-dots lg:hidden">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
 
         {/* Header */}

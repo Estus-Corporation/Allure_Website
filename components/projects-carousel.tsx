@@ -57,9 +57,9 @@ export default function ProjectsCarousel() {
           <Carousel setApi={setApi} opts={{ align: "center", loop: true }}>
             <CarouselContent className="-ml-3 sm:-ml-4 py-8 sm:py-10 lg:py-12">
               {projects.map((p, i) => (
-                <CarouselItem key={i} className="pl-3 sm:pl-4 basis-[58%] sm:basis-[38%] lg:basis-[26%]">
+                <CarouselItem key={i} className="pl-3 sm:pl-4 basis-[64%] sm:basis-[42%] lg:basis-[31%]">
                   <div
-                    className={`relative mx-auto aspect-[9/16] w-full rounded-2xl overflow-hidden border border-border bg-card card-shadow-sm transition-all duration-500 ease-out ${
+                    className={`relative mx-auto aspect-[9/16] w-[92%] rounded-2xl overflow-hidden border border-border bg-card card-shadow-sm transition-all duration-500 ease-out ${
                       i === activeIndex ? "scale-110 opacity-100 z-10" : "scale-90 opacity-45"
                     }`}
                   >
@@ -67,7 +67,7 @@ export default function ProjectsCarousel() {
                       src={p.src}
                       alt={p.alt}
                       fill
-                      sizes="(max-width: 640px) 58vw, (max-width: 1024px) 38vw, 26vw"
+                      sizes="(max-width: 640px) 65vw, (max-width: 1024px) 42vw, 31vw"
                       className="object-cover"
                     />
                   </div>
