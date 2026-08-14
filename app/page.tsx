@@ -2,13 +2,13 @@ import Header from "@/components/header";
 import Hero from "@/components/hero";
 import PartnersHero from "@/components/partners-hero";
 import HowItWorks from "@/components/how-it-works";
+import ProjectsCarousel from "@/components/projects-carousel";
 import Solutions from "@/components/solutions";
-import Benefits from "@/components/benefits";
 import SavingsCalculator from "@/components/savings-calculator";
 import Testimonials from "@/components/testimonials";
 import WhyAllure from "@/components/why-allure";
-import FinalCTA from "@/components/final-cta";
 import FAQ from "@/components/faq";
+import FinalCTA from "@/components/final-cta";
 import Footer from "@/components/footer";
 
 export default function HomePage() {
@@ -21,12 +21,12 @@ export default function HomePage() {
         <PartnersHero />
         <Solutions />
         <HowItWorks />
-        <Benefits />
+        <ProjectsCarousel />
         <Testimonials />
         <WhyAllure />
         <SavingsCalculator />
-        <FinalCTA />
         <FAQ />
+        <FinalCTA />
       </main>
 
       <Footer />

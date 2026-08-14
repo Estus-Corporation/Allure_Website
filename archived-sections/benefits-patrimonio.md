@@ -1,3 +1,29 @@
+# Section arquivada: "Transforme sua conta de luz em patrimônio."
+
+**Removida em**: 2026-08-14
+**Motivo**: pedido explícito do usuário — tirar a section do site, guardando o código pra eventual retorno.
+**Componente original**: `components/benefits.tsx` (arquivo deletado do repo; código completo abaixo).
+
+## Como restaurar
+
+1. Recriar `components/benefits.tsx` com o conteúdo da seção "Código completo" abaixo.
+2. Em `app/page.tsx`, adicionar de volta:
+   ```tsx
+   import Benefits from "@/components/benefits";
+   ```
+   e renderizar `<Benefits />` entre `<HowItWorks />` e `<Testimonials />` (posição original na ordem da página).
+3. Dependências que a section usa e que **continuam no repo** (não foram tocadas): `components/rotating-badge.tsx`, hook `useScrollAnimation` (`hooks/use-scroll-animation`), `gsap` (já é dependência do projeto).
+4. Imagens usadas: `public/images/benefit-economy.jpg` (ativa no array `benefits`) e `public/images/benefit-value.jpg` (não estava mais referenciada no array no momento da remoção, mas segue em `public/images/` caso queira reaproveitar).
+
+## O que era
+
+Section "Benefícios" com layout 2 colunas no desktop (`lg:grid-cols-[44%_56%]`): esquerda com headline "Transforme sua conta de luz em **patrimônio**." + subtítulo, mini-features (economia/valorização/sustentabilidade) e CTA "Simular minha economia"; direita com painel de imagem (`benefit-economy.jpg`) com hover-expand via GSAP (largura animada em px) e um card flutuante "voando" no canto inferior direito. Mobile: badge rotativo no lugar dos mini-cards, painel de imagem revela texto via `IntersectionObserver` ao cruzar 55% de visibilidade.
+
+Ficava renderizada em `app/page.tsx` nesta ordem: `Header → Hero → PartnersHero → Solutions → HowItWorks → Benefits → Testimonials → WhyAllure → SavingsCalculator → FinalCTA → FAQ → Footer`.
+
+## Código completo (`components/benefits.tsx`)
+
+```tsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -306,3 +332,4 @@ export default function Benefits() {
     </section>
   );
 }
+```

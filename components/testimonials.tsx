@@ -53,7 +53,7 @@ const testimonials: Testimonial[] = [
 
 function TestimonialCard({ t }: { t: Testimonial }) {
   return (
-    <figure className="group relative flex flex-col min-w-0 shrink-0 w-[82%] snap-start md:w-auto rounded-2xl bg-card border border-border p-7 sm:p-8 lg:p-9 card-hover card-shadow-sm">
+    <figure className="group relative flex flex-col min-w-0 shrink-0 w-[82%] snap-start md:w-auto rounded-2xl bg-card border border-border p-7 sm:p-8 lg:p-9 card-hover card-shadow-sm shadow-[0_18px_42px_-18px_rgba(14,44,107,0.28)]">
       {/* Stars + Google badge */}
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-1">
@@ -101,7 +101,7 @@ export default function Testimonials() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="section-py bg-muted bg-dots">
+    <section className="section-py bg-background">
       <div ref={ref} className={`px-5 sm:px-6 lg:px-8 scroll-animate ${isVisible ? "visible" : ""}`}>
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 items-end mb-16 lg:mb-20">

@@ -69,8 +69,26 @@ export default function FinalCTA() {
 
   return (
     <section id="contato" className="relative overflow-hidden bg-white text-foreground">
-      {/* Textura de pontos bem discreta no topo (sem manchas azuis) */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-dots opacity-20 [mask-image:linear-gradient(to_bottom,#000,transparent)]" aria-hidden />
+      {/* Imagem de fundo */}
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
+        <Image src="/images/fundo-cta.png" alt="" fill quality={95} className="object-cover" />
+      </div>
+
+      {/* Scrim — sombra branca forte no topo, marcando bem a divisória com a section anterior */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-1/2 z-[1]"
+        style={{
+          background: "linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 20%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0) 100%)",
+        }}
+        aria-hidden
+      />
+
+      {/* Textura sutil no centro — preenche a área lisa/vazia do meio da foto de fundo */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] bg-dots opacity-40"
+        style={{ maskImage: "radial-gradient(ellipse 55% 55% at 50% 50%, #000 0%, transparent 75%)", WebkitMaskImage: "radial-gradient(ellipse 55% 55% at 50% 50%, #000 0%, transparent 75%)" }}
+        aria-hidden
+      />
 
       <div ref={ref} className={`relative z-10 px-5 sm:px-6 lg:px-8 section-py-lg scroll-animate ${isVisible ? "visible" : ""}`}>
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-x-20 lg:gap-y-6 items-stretch">
@@ -159,7 +177,7 @@ export default function FinalCTA() {
                         : ""
                     }`}
                   >
-                    <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-brand-muted mb-3">
+                    <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-brand-muted shadow-[0_4px_10px_-3px_rgba(59,130,246,0.75)] mb-3">
                       <Icon className="w-5 h-5 text-brand" strokeWidth={1.9} />
                     </span>
                     <p className="font-display font-semibold text-sm text-foreground leading-snug text-pretty whitespace-pre-line">{title}</p>

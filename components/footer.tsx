@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
 
 interface FooterColumnProps {
@@ -12,9 +12,9 @@ const footerColumns: FooterColumnProps[] = [
   {
     title: "Soluções",
     links: [
-      { label: "Energia Solar Residencial", href: "#servicos" },
-      { label: "Energia Solar Empresarial", href: "#servicos" },
-      { label: "Energia Solar Rural", href: "#servicos" },
+      { label: "Residenciais", href: "#servicos" },
+      { label: "Empresariais", href: "#servicos" },
+      { label: "Rurais", href: "#servicos" },
     ],
   },
   {
@@ -58,13 +58,13 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-primary text-white">
       {/* Brilho decorativo + linha de brilho no topo */}
       <div className="pointer-events-none absolute -top-28 left-1/3 h-72 w-72 rounded-full bg-brand/20 blur-[120px]" aria-hidden />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" aria-hidden />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-brand" aria-hidden />
 
       <div className="relative max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 lg:py-20">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1.5fr]">
           {/* Marca */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="#inicio" className="inline-flex items-center mb-5">
+            <Link href="#inicio" className="inline-flex items-center mb-5 -mt-4 sm:-mt-5">
               <Image
                 src="/images/logo-allure.png"
                 alt="Allure Engenharia Solar"
@@ -120,20 +120,16 @@ export default function Footer() {
                   contato@allureenergiasolar.com.br
                 </Link>
               </li>
-              <li className="flex items-start gap-2.5 text-white/60 text-sm">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>
-                  Av. Comendador Alfredo Maffei, 1387 — Sala 33, Centro, São Carlos — SP, 13561-270
-                  <a
-                    href={MAPS_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-1.5 inline-flex items-center gap-1 text-brand-3 hover:underline"
-                  >
-                    Ver no mapa
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                </span>
+              <li>
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 text-white/60 hover:text-white transition-colors text-sm"
+                >
+                  <MapPin className="w-4 h-4 flex-shrink-0" />
+                  Localização
+                </a>
               </li>
             </ul>
           </div>
@@ -144,9 +140,18 @@ export default function Footer() {
           <p className="text-white/40 text-xs sm:text-sm text-center sm:text-left">
             © 2026 Allure Engenharia Solar. Todos os direitos reservados.
           </p>
-          <Link href="#inicio" className="text-white/40 hover:text-white text-xs sm:text-sm transition-colors">
-            Voltar ao topo
-          </Link>
+          <p className="text-white/40 text-xs sm:text-sm">
+            Feito por{" "}
+            <a
+              href="https://www.estuscorporation.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              Estus Corporation
+            </a>
+            .
+          </p>
         </div>
       </div>
     </footer>

@@ -21,9 +21,11 @@ Rodar: `npm run dev` (porta 3000, cai pra 3001 se ocupada). Typecheck: `npx tsc 
 `app/page.tsx` renderiza, nesta ordem:
 
 ```
-Header → Hero → Solutions → HowItWorks → Testimonials → Benefits
+Header → Hero → Solutions → HowItWorks → Testimonials
 → SavingsCalculator → WhyAllure → FinalCTA → FAQ → Footer → WhatsAppButton
 ```
+
+Section "Benefícios" ("Transforme sua conta de luz em patrimônio.") foi **removida do site** em 2026-08-14 a pedido do usuário — código completo arquivado em [archived-sections/benefits-patrimonio.md](archived-sections/benefits-patrimonio.md), com instruções de como restaurar. `components/benefits.tsx` foi deletado (não é mais órfão, foi removido de fato).
 
 Cada section é um componente próprio em `components/*.tsx`, client component (`"use client"`), a maioria usando `useScrollAnimation` pra entrada fade-in-up no scroll.
 
