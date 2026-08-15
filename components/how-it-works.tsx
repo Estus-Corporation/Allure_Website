@@ -11,26 +11,26 @@ const steps = [
   {
     num: 1,
     Icon: Sun,
+    image: "/images/lulu-1.png",
+    imageAlt: "Painel solar captando energia do sol",
     title: "Captação inteligente",
-    description: "Painéis de alta eficiência convertem a luz do sol em energia limpa, dimensionados com precisão para o seu consumo real.",
-    highlight: "98%",
-    highlightLabel: "eficiência dos painéis",
+    description: "Painéis de alta eficiência convertem a luz do sol em energia limpa para sua casa.",
   },
   {
     num: 2,
     Icon: Cpu,
+    image: "/images/lulu-2.png",
+    imageAlt: "Inversor convertendo e gerenciando a energia gerada",
     title: "Conversão e gestão",
-    description: "Inversores premium transformam e otimizam a energia gerada, com monitoramento em tempo real direto no seu celular.",
-    highlight: "24/7",
-    highlightLabel: "monitoramento ativo",
+    description: "Inversores premium otimizam a energia gerada, com monitoramento em tempo real.",
   },
   {
     num: 3,
     Icon: TrendingDown,
+    image: "/images/lulu-3.png",
+    imageAlt: "Residência economizando com energia solar",
     title: "Economia acumulada",
-    description: "O excedente vira créditos na rede e abate sua conta. Retorno do investimento, em média, entre 3 e 5 anos.",
-    highlight: "3–5 anos",
-    highlightLabel: "retorno do investimento",
+    description: "O excedente vira créditos na rede e reduz sua conta de luz.",
   },
 ];
 
@@ -128,38 +128,25 @@ export default function HowItWorks() {
   }, []);
 
   return (
-    <section id="como-funciona" className="relative py-10 lg:py-12 bg-[#071626] overflow-hidden">
+    <section id="como-funciona" className="relative py-10 lg:py-12 bg-gradient-to-b from-[#050e1a] via-[#071626] to-[#0a2036] overflow-hidden">
 
-      {/* Imagem de fundo — cobre a section inteira, dimmed/blurred pra ler como backdrop ambiente. */}
-      <div className="pointer-events-none absolute inset-0 select-none opacity-30 blur-[2px]">
-        <Image
-          src="/images/ceu.png"
-          alt=""
-          fill
-          quality={95}
-          className="object-cover"
-        />
-      </div>
-
-      {/* Scrim — keeps panels recognizable at the edges, fully clears the copy zone for AA contrast.
-          Mobile gets a vertical fade (holds up on narrow/tall viewports); md+ switches to the
-          wide radial shape tuned for the desktop aspect ratio. */}
+      {/* Textura — grid de pontos que esmaece no centro (onde fica o texto), pra dar
+          profundidade sem brigar com o conteúdo */}
       <div
-        className="pointer-events-none absolute inset-0 z-[1] md:hidden"
+        className="pointer-events-none absolute inset-0"
         style={{
-          background:
-            "linear-gradient(to bottom, rgba(7,22,38,0.42) 0%, rgba(7,22,38,0.92) 30%, rgba(7,22,38,0.92) 70%, rgba(7,22,38,0.42) 100%)",
+          backgroundImage: "radial-gradient(circle, rgba(91,184,245,0.22) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          maskImage: "radial-gradient(ellipse 65% 55% at 50% 38%, transparent 0%, black 75%)",
+          WebkitMaskImage: "radial-gradient(ellipse 65% 55% at 50% 38%, transparent 0%, black 75%)",
         }}
         aria-hidden
       />
-      <div
-        className="pointer-events-none absolute inset-0 z-[1] hidden md:block"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 65% at 50% 42%, rgba(7,22,38,0.9) 0%, rgba(7,22,38,0.72) 45%, rgba(7,22,38,0.45) 72%, rgba(7,22,38,0.22) 100%)",
-        }}
-        aria-hidden
-      />
+
+      {/* Glows ambiente — dão profundidade e um leve calor de cor nos cantos */}
+      <div className="pointer-events-none absolute -top-32 -left-24 w-[34rem] h-[34rem] rounded-full bg-brand-3/15 blur-[140px] animate-float motion-reduce:animate-none" aria-hidden />
+      <div className="pointer-events-none absolute -bottom-40 -right-24 w-[38rem] h-[30rem] rounded-full bg-brand/20 blur-[140px] animate-float motion-reduce:animate-none [animation-delay:2.5s]" aria-hidden />
+      <div className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-[50rem] h-[20rem] rounded-full bg-brand-2/10 blur-[160px]" aria-hidden />
 
       <div
         ref={ref}
@@ -192,7 +179,7 @@ export default function HowItWorks() {
           </svg>
 
           <div className="flex flex-col gap-10">
-            {steps.map(({ num, Icon, title, description, highlight, highlightLabel }) => (
+            {steps.map(({ num, Icon, title, description }) => (
               <div key={num} className="how-step-mobile grid grid-cols-[2.5rem_1fr] gap-x-4">
                 <div className="how-step-node relative z-10 w-10 h-10 rounded-full flex items-center justify-center border-4 border-[#071626] bg-[#0c2036] ring-1 ring-white/15">
                   <Icon className="w-5 h-5 text-brand-3" strokeWidth={1.75} />
@@ -205,12 +192,8 @@ export default function HowItWorks() {
                   <h3 className="font-display text-xl font-semibold tracking-tight text-white mb-2 text-pretty leading-snug">
                     {title}
                   </h3>
-                  <p className="text-white/55 text-sm leading-relaxed mb-3 text-pretty">
+                  <p className="text-white/55 text-sm leading-relaxed text-pretty">
                     {description}
-                  </p>
-                  <p className="text-sm">
-                    <span className="font-display font-bold text-white">{highlight}</span>
-                    <span className="text-white/45"> — {highlightLabel}</span>
                   </p>
                 </div>
               </div>
@@ -218,33 +201,36 @@ export default function HowItWorks() {
           </div>
         </div>
 
-        {/* Desktop: editorial numeral rail — each column centered so it lines up
-            with the centered header above instead of hugging the left edge. */}
+        {/* Desktop: ilustrações flutuantes conectadas por uma linha central, numeral
+            grande ao lado do título — sem cards, o conteúdo respira sobre o fundo. */}
         <div className={`hidden md:block stagger-children ${isVisible ? "visible" : ""}`}>
           <div className="grid md:grid-cols-3 gap-10 lg:gap-14">
-            {steps.map(({ num, Icon, title, description, highlight, highlightLabel }) => (
-              <div key={num} className="flex flex-col items-center text-center min-w-0 h-full">
-                <div className="relative flex flex-1 flex-col items-center text-center w-full rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm px-6 py-5 lg:px-8 lg:py-6 transition-all duration-300 hover:bg-white/[0.06] hover:border-white/20 hover:-translate-y-1">
-                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-white/10 flex items-center justify-center mb-4">
-                    <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-brand-3" strokeWidth={1.5} />
-                    <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-brand-3 text-[#071626] text-[0.65rem] font-bold flex items-center justify-center">
-                      {num}
-                    </span>
-                  </div>
-
-                  <h3 className="font-display text-lg sm:text-xl font-semibold tracking-tight text-white mb-2 text-pretty leading-snug">
-                    {title}
-                  </h3>
-
-                  <p className="text-white/55 text-sm leading-relaxed text-pretty max-w-xs">
-                    {description}
-                  </p>
+            {steps.map(({ num, image, imageAlt, title, description }, i) => (
+              <div key={num} className="flex flex-col items-center text-center min-w-0">
+                <div className="relative w-full max-w-[19rem] h-56 lg:h-64 mb-1">
+                  <Image src={image} alt={imageAlt} fill className="object-contain" quality={95} />
                 </div>
 
-                <p className="mt-4 text-sm">
-                  <span className="font-display font-bold text-white">{highlight}</span>
-                  <span className="text-white/45"> — {highlightLabel}</span>
-                </p>
+                {/* Linha conectando as 3 etapas, com nó luminoso em cada uma */}
+                <div className="flex items-center w-full mb-6" aria-hidden>
+                  <div className={`h-px flex-1 bg-gradient-to-r from-transparent to-brand-3/40 ${i === 0 ? "opacity-0" : ""}`} />
+                  <span className="w-2.5 h-2.5 rounded-full bg-brand-3 mx-2.5 shrink-0 shadow-[0_0_10px_2px_rgba(91,184,245,0.55)]" />
+                  <div className={`h-px flex-1 bg-gradient-to-l from-transparent to-brand-3/40 ${i === 2 ? "opacity-0" : ""}`} />
+                </div>
+
+                <div className="flex items-start gap-3 text-left">
+                  <span className="font-display text-3xl lg:text-4xl font-extrabold text-brand-3/50 leading-none shrink-0">
+                    {String(num).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-lg lg:text-xl font-semibold tracking-tight text-white text-pretty leading-snug">
+                      {title}
+                    </h3>
+                    <p className="mt-2 text-white/55 text-sm leading-relaxed text-pretty">
+                      {description}
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
