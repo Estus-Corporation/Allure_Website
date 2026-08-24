@@ -69,9 +69,10 @@ export default function FinalCTA() {
 
   return (
     <section id="contato" className="relative overflow-hidden bg-white text-foreground">
-      {/* Imagem de fundo */}
+      {/* Imagem de fundo — versão recortada pro mobile, original a partir do sm: */}
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
-        <Image src="/images/fundo-cta.png" alt="" fill quality={95} className="object-cover" />
+        <Image src="/images/fundo-cta-mobile.png" alt="" fill quality={95} className="object-cover sm:hidden" />
+        <Image src="/images/fundo-cta.png" alt="" fill quality={95} className="object-cover hidden sm:block" />
       </div>
 
       {/* Scrim — sombra branca forte no topo, marcando bem a divisória com a section anterior */}
@@ -157,14 +158,18 @@ export default function FinalCTA() {
 
           {/* Ícones (desktop) + rotativo (mobile) — vem depois do form no mobile */}
           <div className="min-w-0 order-last lg:order-none lg:col-start-1 lg:row-start-2">
-              {/* Destaque rotativo — mobile only, logo abaixo do form */}
-              <RotatingBadge
-                items={features.map(({ Icon, title }) => ({ Icon, title: title.replace("\n", " ") }))}
-                className="lg:hidden flex justify-center"
-                badgeClassName="bg-brand-muted"
-                iconClassName="text-brand"
-                textClassName="text-foreground"
-              />
+              {/* Destaque rotativo — mobile only, logo abaixo do form. Fundo sólido pra
+                  garantir contraste sobre a foto (sem isso o texto quase sumia nela). */}
+              <div className="lg:hidden flex justify-center">
+                <div className="bg-white rounded-full pl-2.5 pr-5 py-2 shadow-lg">
+                  <RotatingBadge
+                    items={features.map(({ Icon, title }) => ({ Icon, title: title.replace("\n", " ") }))}
+                    badgeClassName="bg-brand-muted"
+                    iconClassName="text-brand"
+                    textClassName="text-foreground"
+                  />
+                </div>
+              </div>
 
               {/* Feature highlights — desktop: 3 colunas; mobile: rotativo acima */}
               <div className="hidden lg:grid grid-cols-3 mb-6">

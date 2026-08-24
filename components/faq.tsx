@@ -17,8 +17,8 @@ export default function FAQ() {
   return (
     <section className="relative section-py bg-muted bg-dots overflow-hidden">
       {/* Glow ambiente — mesma linguagem do savings-calculator, dá profundidade ao fundo pontilhado */}
-      <div className="pointer-events-none absolute -top-24 -left-32 w-[30rem] h-[30rem] rounded-full bg-brand/15 blur-[130px] animate-float motion-reduce:animate-none" aria-hidden />
-      <div className="pointer-events-none absolute -top-24 -right-20 w-[26rem] h-[26rem] rounded-full bg-brand-3/20 blur-[130px] animate-float motion-reduce:animate-none [animation-delay:2.5s]" aria-hidden />
+      <div className="hidden sm:block pointer-events-none absolute -top-24 -left-32 w-[30rem] h-[30rem] rounded-full bg-brand/15 blur-[130px] animate-float motion-reduce:animate-none" aria-hidden />
+      <div className="hidden sm:block pointer-events-none absolute -top-24 -right-20 w-[26rem] h-[26rem] rounded-full bg-brand-3/20 blur-[130px] animate-float motion-reduce:animate-none [animation-delay:2.5s]" aria-hidden />
 
       <div
         ref={ref}
