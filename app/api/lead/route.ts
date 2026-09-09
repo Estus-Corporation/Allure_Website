@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   const apiKey = process.env.AZUME_API_KEY;
   if (!apiKey) {
     console.error("AZUME_API_KEY not configured");
-    return NextResponse.json({ ok: false });
+    return NextResponse.json({ ok: false, stage: "no-key" });
   }
 
   const digitsPhone = phone.replace(/\D/g, "");
@@ -33,13 +33,27 @@ export async function POST(request: Request) {
     });
 
     if (!res.ok) {
-      console.error("Azume lead creation failed", res.status, await res.text());
-      return NextResponse.json({ ok: false });
+      const text = await res.text();
+      console.error("Azume lead creation failed", res.status, text);
+      return NextResponse.json({
+        ok: false,
+        stage: "azume-error",
+        azumeStatus: res.status,
+        azumeBody: text.slice(0, 500),
+        keyPrefix: apiKey.slice(0, 8),
+        keyLen: apiKey.length,
+      });
     }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Azume lead creation error", err);
-    return NextResponse.json({ ok: false });
+    return NextResponse.json({
+      ok: false,
+      stage: "fetch-throw",
+      message: err instanceof Error ? err.message : String(err),
+      keyPrefix: apiKey.slice(0, 8),
+      keyLen: apiKey.length,
+    });
   }
 }
